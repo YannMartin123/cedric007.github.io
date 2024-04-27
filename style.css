@@ -1,0 +1,140 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+header {
+  height:400px;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+   
+    padding: 10px 0;
+    
+}
+
+ ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+
+
+nav ul li a {
+    
+    text-decoration: none;
+}
+
+.prestations {
+    padding: 20px;
+}
+
+.prestation {
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.header
+{
+    background-color: #10222e;
+    display: flex;
+}
+
+body{
+    background-size:cover;
+    color: white;
+    text-align: center;
+    
+}
+a:hoover {
+color:darkred;
+}
+@font-face {
+    src: url('Montserrat-SemiBold.ttf');
+    font-family: 'montserrat_bold';
+
+}
+
+@font-face {
+    src: url('Montserrat-ExtraLightItalic.ttf');
+    font-family: 'montserrat';
+
+}
+
+h1{
+    font-family: 'montserrat_bold';
+    font-size: 100px;
+}
+
+h2{
+    font-family: 'montserrat';
+    font-size: 30px;
+}
+
+body{
+    font-family: 'montserrat_bold';
+}
+ 
+.texte {
+    color: rgb(163, 39, 39); /* Couleur initiale du texte */
+    transition: color 0.3s; /* Animation de transition */
+}
+
+a:hover {
+    color: rgb(148, 189, 182); /* Couleur du texte au survol */
+}
+
+a{
+    color: white;
+    
+}
+
+.b1
+{
+    background-color:#ffde97;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    width: 500px;
+    padding: 30px;
+    line-height: 1.25;
+    text-align: justify;
+    
+}
+
+.b2
+{
+    background-color:#153042;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    width: 500px;
+   
+}
+
+.container
+{
+    display: flex;
+    text-align: center;
+    padding: 50px;
+}
+
+.circled
+{
+    border-radius: 30px;
+}
+

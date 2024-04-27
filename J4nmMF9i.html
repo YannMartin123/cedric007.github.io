@@ -1,0 +1,593 @@
+
+<!doctype html>
+<html lang="fr-FR">
+    <head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",(e=>{this.persisted=e.persisted})),window.addEventListener("DOMContentLoaded",(()=>{this._preconnect3rdParties()})),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){document.hidden?e._triggerListener():(this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",e.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",e.touchStartHandler),document.addEventListener("visibilitychange",e.userEventHandler))}_removeUserInteractionListener(){this.triggerEvents.forEach((e=>window.removeEventListener(e,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(e){"HTML"!==e.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),e.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"onclick","rocket-onclick"))}_onTouchMove(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick")}_onTouchEnd(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(e){e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick"),this.interceptedClicks.push(e),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((e=>{e.target.dispatchEvent(new MouseEvent("click",{view:e.view,bubbles:!0,cancelable:!0}))}))}_renameDOMAttribute(e,t,n){e.hasAttribute&&e.hasAttribute(t)&&(event.target.setAttribute(n,event.target.getAttribute(t)),event.target.removeAttribute(t))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let e=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{if(t.hasAttribute("src")){const n=new URL(t.src).origin;n!==location.origin&&e.push({src:n,crossOrigin:t.crossOrigin||"module"===t.getAttribute("data-rocket-type")})}})),e=[...new Map(e.map((e=>[JSON.stringify(e),e]))).values()],this._batchInjectResourceHints(e,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(e){}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._replayClicks()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._littleBreath(),new Promise((t=>{const n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t());try{e.parentNode.replaceChild(n,e)}catch(e){t()}}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(e,t){var n=document.createDocumentFragment();e.forEach((e=>{if(e.src){const i=document.createElement("link");i.href=e.src,i.rel=t,"preconnect"!==t&&(i.as="script"),e.getAttribute&&"module"===e.getAttribute("data-rocket-type")&&(i.crossOrigin=!0),e.crossOrigin&&(i.crossOrigin=e.crossOrigin),n.appendChild(i)}})),document.head.appendChild(n)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),await this._littleBreath();const e=new Event("rocket-pageshow");e.persisted=this.persisted,window.dispatchEvent(e),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const s=document.createDocumentFragment();i.setStart(s,0),s.appendChild(i.createContextualFragment(t)),r.insertBefore(s,o)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise((e=>setTimeout(e))):new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts;e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
+        <title>Contrat de prestation de services : présentation et contenu - Maison de l&#039;emploi</title><link rel="stylesheet" href="https://www.maisondelemploi-slva.com/wp-content/cache/min/1/0258a98b128ee1098e0ef06582bc2a57.css" media="all" data-minify="1" />
+<meta name="description" content="Les relations professionnelles entre prestataire de service et clients doivent toujours être matérialisées par un document écrit. Il s’agit du contrat de prestation de service. Le contrat de prestation de service est un acte juridique, qui lie les deux parties, durant la durée d’exécution définie pour la prestation. Le contrat…" />
+<meta property="article:published_time" content="2021-09-17T09:15:00+02:00" />
+<meta property="article:modified_time" content="2021-09-17T09:15:00+02:00" />
+<meta property="og:updated_time" content="2021-09-17T09:15:00+02:00" />
+<meta name="thumbnail" content="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-150x150.jpeg" />
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<link rel="canonical" href="https://www.maisondelemploi-slva.com/contrat-de-prestation-de-services-presentation-et-contenu/" />
+<meta property="og:url" content="https://www.maisondelemploi-slva.com/contrat-de-prestation-de-services-presentation-et-contenu/" />
+<meta property="og:site_name" content="Maison de l&#039;emploi" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Contrat de prestation de services : présentation et contenu - Maison de l&#039;emploi" />
+<meta property="og:description" content="Les relations professionnelles entre prestataire de service et clients doivent toujours être matérialisées par un document écrit. Il s’agit du contrat de prestation de service. Le contrat de prestation de service est un acte juridique, qui lie les deux parties, durant la durée d’exécution définie pour la prestation. Le contrat…" />
+<meta property="og:image" content="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services.jpeg" />
+<meta property="og:image:secure_url" content="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services.jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="800" />
+<meta property="og:image:alt" content="signature d&#039;un contrat de prestations de services" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Contrat de prestation de services : présentation et contenu - Maison de l&#039;emploi" />
+<meta name="twitter:description" content="Les relations professionnelles entre prestataire de service et clients doivent toujours être matérialisées par un document écrit. Il s’agit du contrat de prestation de service. Le contrat de prestation de service est un acte juridique, qui lie les deux parties, durant la durée d’exécution définie pour la prestation. Le contrat…" />
+<meta name="twitter:image" content="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services.jpeg" />
+
+
+
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+
+
+
+
+<style id='ez-toc-inline-css'>
+div#ez-toc-container p.ez-toc-title {font-size: 100%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 100%;}div#ez-toc-container nav ul ul li ul li {font-size: %!important;}div#ez-toc-container {background: #1e2229;border: 1px solid #292e38;width: 100%;}div#ez-toc-container p.ez-toc-title {color: #4a88bf;}div#ez-toc-container ul.ez-toc-list a {color: #4a88bf;}div#ez-toc-container ul.ez-toc-list a:hover {color: #4a88bf;}div#ez-toc-container ul.ez-toc-list a:visited {color: #4a88bf;}
+.ez-toc-container-direction {
+    direction: ltr;
+}
+
+.ez-toc-counter ul {
+    counter-reset: item;
+}
+
+
+
+.ez-toc-counter nav ul li a::before {
+    content: counters(item, ".", decimal) ". ";
+    display: inline-block;
+    counter-increment: item;
+    margin-right: .2em; 
+
+    float: left;
+}
+
+
+.ez-toc-widget-direction {
+    direction: ltr;
+}
+
+.ez-toc-widget-container ul {
+    counter-reset: item;
+}
+
+
+
+.ez-toc-widget-container nav ul li a::before {
+    content: counters(item, ".", decimal) ". ";
+    display: inline-block;
+    counter-increment: item;
+    margin-right: .2em; 
+
+    float: left;
+}
+
+
+</style>
+
+
+<style id='rocket-lazyload-inline-css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://www.maisondelemploi-slva.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}
+</style>
+<script type="rocketlazyloadscript" src='https://www.maisondelemploi-slva.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type="rocketlazyloadscript" src='https://www.maisondelemploi-slva.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer></script>
+<link rel="amphtml" href="https://www.maisondelemploi-slva.com/contrat-de-prestation-de-services-presentation-et-contenu/amp/"><link rel="icon" href="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-1-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-1-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-1-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-1-270x270.png" />
+<style>
+			html {
+				margin-top: 0 !important;
+				font-size: 100%;
+			}
+
+			body,
+			input,
+			select,
+			textarea,
+			button,
+			.button {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;;
+			}
+
+			h1, .h1,
+			h2, .h2,
+			h3, .h3,
+			h4, .h4,
+			h5, .h5,
+			h6, .h6 {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;;
+			}
+
+			#header .inner .menu nav ul:not(.sub-menu) > li > a.button,
+			#header .inner .menu nav ul:not(.sub-menu) > li > span.button {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;;
+			}
+
+			body.dark .button,
+			body.dark button[type="submit"],
+			body.dark input[type="submit"],
+			body.light .button,
+			body.light button[type="submit"],
+			body.light input[type="submit"] {
+				background-color: #4a88bf !important;
+				color: #FFFFFF !important;
+			}
+
+			body.dark .button::after,
+			body.light .button::after {
+				border-color: #FFFFFF !important;
+			}
+
+			body.dark .button:hover,
+			body.dark button[type="submit"]:hover,
+			body.dark input[type="submit"]:hover,
+			body.light .button:hover,
+			body.light button[type="submit"]:hover,
+			body.light input[type="submit"]:hover {
+				background-color: #3b6d99 !important;
+			}
+
+			#header .site-navigation .inner .menu nav ul:not(.sub-menu) > li > a:not(.button)::before,
+			#header .site-navigation .inner .menu nav ul:not(.sub-menu) > li > span:not(.button)::before,
+			#header .site-navigation .inner .menu nav ul.sub-menu > li >a::before,
+			#header .site-navigation .inner .menu nav ul.sub-menu > li >span::before {
+				border-color: #4a88bf !important;
+			}
+
+			#header #scroll-indicator .progress {
+				background-color: #4a88bf !important;
+			}
+
+			#footer .bar .widget .widget-title:before {
+				background-color: #4a88bf !important;
+			}
+
+			body.category main.loop .loop-header,
+			body.dark.category main.loop .loop-header .header p,
+			body.light.category main.loop .loop-header .header p {
+				background-color: #4a88bf;
+			}
+
+			body.tag main.loop .loop-header,
+			body.dark.tag main.loop .loop-header .header p,
+			body.light.tag main.loop .loop-header .header p {
+				background-color: #4a88bf;
+			}
+
+			body.light main.blog .post a .details .category,
+			body.dark main.blog .post a .details .category,
+			body.light .entries .entry a .details .category,
+			body.dark .entries .entry a .details .category {
+				background-color: #4a88bf;
+			}
+
+			body.light main.entry.single .header .details .category a,
+			body.light main.entry.single .header .details .category span,
+			body.dark main.entry.single .header .details .category a,
+			body.dark main.entry.single .header .details .category span,
+			.sidebar .widget .widget-title::before,
+			#footer .top .widget .widget-title::before {
+				background-color: #4a88bf !important;
+			}
+
+			body.light main.entry.single .entry-layout .contents h3:not(.sc),
+			body.light main.entry.single .entry-layout .contents .h3:not(.sc),
+			body.light main.entry.single .entry-layout .contents a:not([class]),
+			body.light main.entry.single .entry-layout .contents span[data-obflink-url]:not(.sc),
+			body.light main.entry.page .entry-layout .contents h3:not(.sc),
+			body.light main.entry.page .entry-layout .contents .h3:not(.sc),
+			body.light main.entry.page .entry-layout .contents a:not([class]),
+			body.light main.entry.page .entry-layout .contents span[data-obflink-url]:not(.sc),
+			body.dark main.entry.single .entry-layout .contents h3:not(.sc),
+			body.dark main.entry.single .entry-layout .contents .h3:not(.sc),
+			body.dark main.entry.single .entry-layout .contents a:not([class]),
+			body.dark main.entry.single .entry-layout .contents span[data-obflink-url]:not(.sc),
+			body.dark main.entry.page .entry-layout .contents h3:not(.sc),
+			body.dark main.entry.page .entry-layout .contents .h3:not(.sc),
+			body.dark main.entry.page .entry-layout .contents a:not([class]),
+			body.dark main.entry.page .entry-layout .contents span[data-obflink-url]:not(.sc) {
+				color: #4a88bf;
+			}
+
+			body.light main.entry.single .entry-layout .contents h2::before,
+			body.light main.entry.page .entry-layout .contents h2::before,
+			body.dark main.entry.single .entry-layout .contents h2::before,
+			body.dark main.entry.page .entry-layout .contents h2::before {
+				background-color: #4a88bf;
+			}
+
+			@media (min-width: 801px) {
+				#header .site-navigation .inner .menu .icons .search span:hover svg path,
+				#header .site-navigation .inner .menu .icons .social ul li a:hover svg path {
+					fill: #4a88bf !important;
+				}
+			}
+
+			@media (max-width: 800px) {
+				#header .site-navigation .inner .menu nav ul:not(.sub-menu) > li.current-menu-ancestor > a:not(.button),
+				#header .site-navigation .inner .menu nav ul:not(.sub-menu) > li.current-menu-ancestor > span:not(.button),
+				#header .site-navigation .inner .menu nav ul:not(.sub-menu) > li.current-menu-item > a:not(.button),
+				#header .site-navigation .inner .menu nav ul:not(.sub-menu) > li.current-menu-item > span:not(.button),
+				#header .site-navigation .inner .menu nav ul.sub-menu > li.current-menu-ancestor > a,
+				#header .site-navigation .inner .menu nav ul.sub-menu > li.current-menu-ancestor > span,
+				#header .site-navigation .inner .menu nav ul.sub-menu > li.current-menu-item > a,
+				#header .site-navigation .inner .menu nav ul.sub-menu > li.current-menu-item > span {
+					color: #4a88bf;
+				}
+			}
+		
+					body.light main.entry.page .entry-layout .contents:not(.woo) a:not([class]),
+					body.dark main.entry.page .entry-layout .contents:not(.woo) a:not([class]),
+					body.light main.entry.page .entry-layout .contents:not(.woo) span[data-obflink-url]:not(.sc),
+					body.dark main.entry.page .entry-layout .contents:not(.woo) span[data-obflink-url]:not(.sc),
+					body.dark main.entry.single .entry-layout .contents:not(.woo) a:not([class]),
+					body.light main.entry.single .entry-layout .contents:not(.woo) a:not([class]),
+					body.dark main.entry.single .entry-layout .contents:not(.woo) span[data-obflink-url]:not(.sc),
+					body.light main.entry.single .entry-layout .contents:not(.woo) span[data-obflink-url]:not(.sc) {
+						color: #4a88bf !important;
+					}
+				</style><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+    </head>
+    <body class="post-template-default single single-post postid-5506 single-format-standard wp-custom-logo elementor-default dark plain is_sticky">
+                                
+    <main class="entry single" id="post-5506" role="main">
+                    <div class="entry-header model-1 no-bc">
+                <div class="container">
+                    <div class="grid-noBottom">
+                        <div class="col-12">
+                            <div class="header">
+                                                                    <div class="details">
+                                                                                    <div class="category">
+                                                                                                                                                            <span>
+                                                            Entreprise
+                                                        </span>
+                                                                                                                                                </div>
+                                                                                <div class="title">
+                                            <h1>
+                                                Contrat de prestation de services : présentation et contenu
+                                            </h1>
+                                        </div>
+                                        <div class="metas">
+                                            <span>
+                                                                                                    Par Frédéric
+                                                    , le 17 septembre 2021
+                                                    
+                                                                                                                                                                                                                                                                                                                                                </span>
+                                        </div>
+                                    </div>
+                                                                                                                                            <div class="image fixed" style="height: 500px">
+                                            <picture class="attachment-seomag-md size-seomag-md wp-post-image">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-800x533.jpeg.webp 800w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-700x467.jpeg.webp 700w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-768x512.jpeg.webp 768w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-500x333.jpeg.webp 500w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-650x433.jpeg.webp 650w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services.jpeg.webp 1200w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20800%20533&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 800px) 100vw, 800px"/>
+<img width="800" height="533" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20800%20533&#039;%3E%3C/svg%3E" alt="signature d&#039;un contrat de prestations de services" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-800x533.jpeg 800w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-700x467.jpeg 700w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-768x512.jpeg 768w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-500x333.jpeg 500w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-650x433.jpeg 650w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services.jpeg 1200w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-800x533.jpeg"/>
+</picture>
+<noscript><picture class="attachment-seomag-md size-seomag-md wp-post-image">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-800x533.jpeg.webp 800w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-700x467.jpeg.webp 700w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-768x512.jpeg.webp 768w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-500x333.jpeg.webp 500w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-650x433.jpeg.webp 650w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services.jpeg.webp 1200w" sizes="(max-width: 800px) 100vw, 800px"/>
+<img width="800" height="533" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-800x533.jpeg" alt="signature d&#039;un contrat de prestations de services" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-800x533.jpeg 800w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-700x467.jpeg 700w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-768x512.jpeg 768w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-500x333.jpeg 500w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services-650x433.jpeg 650w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/09/_x_signature-dun-contrat-de-prestations-de-services.jpeg 1200w" sizes="(max-width: 800px) 100vw, 800px"/>
+</picture>
+</noscript>
+                                        </div>
+                                                                                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="entry-layout">
+            <div class="container">
+                <div class="grid-noBottom">
+                    <div class="col-8_sm-12">
+                                                                                                    <div class="contents">
+                                                                <p>Les <strong>relations professionnelles</strong> entre <strong>prestataire de service</strong> et <strong>clients</strong> doivent toujours être matérialisées par un <strong>document écrit</strong>. Il s’agit du <strong>contrat de prestation de service</strong>. Le contrat de prestation de service est un <strong>acte juridique</strong>, qui <strong>lie les deux parties</strong>, durant la durée d’exécution définie pour la prestation. Le contrat de prestation de service définie en ses clauses, les <strong>droits ainsi que les obligations</strong> que les deux parties ont l’une envers l’autre, et qu’elles doivent respecter.</p>
+<div id="ez-toc-container" class="ez-toc-v2_0_33_2 counter-hierarchy ez-toc-counter ez-toc-container-direction">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title">Table des mati&egrave;res</p>
+<span class="ez-toc-title-toggle"><a href="#" class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" style="display: none;"><label for="item" aria-label="Table des matières"><i class="ez-toc-glyphicon ez-toc-icon-toggle"></i></label><input type="checkbox" id="item"></a></span></div>
+<nav><ul class='ez-toc-list ez-toc-list-level-1'><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-1" href="#Le_contrat_de_prestation_de_service_cest_quoi%E2%80%89" title="Le contrat de prestation de service, c’est quoi ?">Le contrat de prestation de service, c’est quoi ?</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-2" href="#Quelle_est_lutilite_du_contrat_de_prestation_de_service%E2%80%89" title="Quelle est l’utilité du contrat de prestation de service ?">Quelle est l’utilité du contrat de prestation de service ?</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-3" href="#Comment_se_structure_un_contrat_de_prestation_de_service%E2%80%89" title="Comment se structure un contrat de prestation de service ?">Comment se structure un contrat de prestation de service ?</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-4" href="#La_presentation_des_contractants" title="La présentation des contractants">La présentation des contractants</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-5" href="#Lobjet_exact_de_la_relation_entre_les_parties" title="L’objet exact de la relation entre les parties">L’objet exact de la relation entre les parties</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-6" href="#Le_prix_a_verser_dans_le_cadre_de_la_realisation_du_travail_par_le_prestataire" title="Le prix à verser dans le cadre de la réalisation du travail par le prestataire">Le prix à verser dans le cadre de la réalisation du travail par le prestataire</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-7" href="#Le_plan_dexecution_des_travaux_fournis_par_lentreprise" title="Le plan d’exécution des travaux fournis par l’entreprise">Le plan d’exécution des travaux fournis par l’entreprise</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-8" href="#La_duree_du_contrat" title="La durée du contrat">La durée du contrat</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-9" href="#Les_differentes_obligations_des_parties_au_contrat_de_prestation_de_service" title="Les différentes obligations des parties au contrat de prestation de service">Les différentes obligations des parties au contrat de prestation de service</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-10" href="#Les_dispositifs_lors_de_la_rupture_du_contrat" title="Les dispositifs lors de la rupture du contrat">Les dispositifs lors de la rupture du contrat</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-11" href="#Les_procedures_a_entreprendre_en_cas_de_litige" title="Les procédures à entreprendre en cas de litige">Les procédures à entreprendre en cas de litige</a></li></ul></li></ul></nav></div>
+<h2><span class="ez-toc-section" id="Le_contrat_de_prestation_de_service_cest_quoi%E2%80%89"></span>Le contrat de prestation de service, c’est quoi ?<span class="ez-toc-section-end"></span></h2>
+<p>Par définition, un <strong>contrat</strong>, en général, est une convention, un <strong>acte juridique</strong>, qui lie deux ou plusieurs parties. Il résulte de <strong>commun accord entre les parties</strong> mentionnées dans le contrat et ce consentement se matérialise au travers de leurs <strong>signatures respectives</strong>. De cet acte découle des <strong>droits et des obligations</strong> de faire ou dans le cas contraire, de ne pas faire vis-à-vis de l’autre contractant. Le contrat lie les deux parties prenantes du contrat dès le moment présent de sa signature, jusqu’à la date définie pour la fin du contrat.</p>
+<p>Ainsi, le contrat de prestation de service est un <strong>acte qui lie le prestataire de service à son client</strong>. Ici, le prestataire peut être une personne ou une entreprise. C’est donc au moyen de ce contrat que <strong>le prestataire</strong> <strong>s’engage à effectuer une activité spécifique</strong> pour le compte de son client. En contrepartie des travaux effectués, le <strong>client s’engage juridiquement à payer le prestataire de service</strong>. Les détails ainsi que les spécificités de leur relation professionnelle sont retranscrits dans les clauses du contrat, que les contractants s’engagent à respecter et à honorer.</p>
+<h2><span class="ez-toc-section" id="Quelle_est_lutilite_du_contrat_de_prestation_de_service%E2%80%89"></span>Quelle est l’utilité du contrat de prestation de service ?<span class="ez-toc-section-end"></span></h2>
+<p>La matérialisation d’un accord entre une entreprise ou une société qui se spécialise dans la prestation de service, et son client permet en effet, pour les deux parties de <strong>sécuriser et de formaliser leur relation</strong>. Les parties au contrat trouvent chacun des bénéfices à sa rédaction.</p>
+<ul>
+<li>Pour <strong>la société prestataire</strong>, c’est au travers le contrat de prestation de service que sera définie spécifiquement la nature de sa prestation, en plus du montant prévu pour la prestation de l’entreprise ;</li>
+<li>Du côté <strong>du client</strong>, le contrat lui permet de bien définir avec plus de précision la prestation de l’entreprise.</li>
+</ul>
+<p>De façon générale, le contrat signé par le client et l’entreprise prestataire pour la réalisation d’un certain type de service, protège les deux parties en cas de <strong>litige</strong>, et <strong>délimite les obligations et les responsabilités de chacune des parties</strong>. Il s’agit ainsi d’un dispositif de sécurité juridique.</p>
+<p>La rédaction d’un contrat n’est pas uniquement limitée à un domaine précis. Il est recommandé à toutes les entreprises ayant comme activité la prestation de service de <strong>rédiger un contrat pour mieux cadrer la relation entre le client et l’entreprise</strong>.</p>
+<h2><span class="ez-toc-section" id="Comment_se_structure_un_contrat_de_prestation_de_service%E2%80%89"></span>Comment se structure un contrat de prestation de service ?<span class="ez-toc-section-end"></span></h2>
+<p>Pour apporter plus de précision, et pour bien <strong>encadrer</strong> <strong>les obligations ainsi que les droits</strong> de chacun, un contrat se subdivise en différentes parties, qui sont appelées les <strong>clauses</strong>. Le nombre de clauses varie d’un contrat à un autre. Mais pour le cas d’une entreprise dans le domaine de la prestation de service, voici quelques clauses, qui peuvent être et qui sont recommandées dans un modèle de <strong>contrat commercial</strong>.</p>
+<h3><span class="ez-toc-section" id="La_presentation_des_contractants"></span>La présentation des contractants<span class="ez-toc-section-end"></span></h3>
+<p>Il est question de <strong>présenter à la fois le client et le prestataire</strong>, qui est ici une société ou une entreprise. Dans cette clause, il est nécessaire de bien <strong>identifier les deux parties</strong>, en insérant différentes informations, telles que, sans exhaustivité :</p>
+<ul>
+<li>Le nom du client ;</li>
+<li>L’adresse du client ;</li>
+<li>Le nom de l’entreprise ;</li>
+<li>La forme juridique prise par l’entreprise prestataire ;</li>
+<li>L’adresse valide où il est possible de localiser l’entreprise.</li>
+</ul>
+<h3><span class="ez-toc-section" id="Lobjet_exact_de_la_relation_entre_les_parties"></span>L’objet exact de la relation entre les parties<span class="ez-toc-section-end"></span></h3>
+<p>Dans cette partie du contrat, les deux parties doivent <strong>décrire le travail à effectuer</strong> par l’entreprise prestataire, avec le plus de détail possible. Il s’agit donc, plus précisément de la partie qui traite et qui expose la <strong>mission réelle du prestataire</strong>, attendu par le client. Même si c’est le client qui se charge d’y exprimer ses attentes, le prestataire doit tout de même s’assurer que les besoins du client sont atteignables.</p>
+<p>En cas de besoin, le prestataire peut apporter des modifications à l’objet du contrat, en tant que professionnel. Mais à la fin, <strong>l’objet exact de la relation entre entreprise et client résulte d’un commun accord entre les deux</strong>.</p>
+<p>Dans le cas où, pour une question d’allégement des clauses du contrat, les détails du travail à faire pourraient être présentés en annexe de l’acte.</p>
+<h3><span class="ez-toc-section" id="Le_prix_a_verser_dans_le_cadre_de_la_realisation_du_travail_par_le_prestataire"></span>Le prix à verser dans le cadre de la réalisation du travail par le prestataire<span class="ez-toc-section-end"></span></h3>
+<p>Il va de soi que cette clause mentionne le <strong>prix convenu pour la réalisation des différents travaux</strong> que commande le client. Le prix de la prestation varie en fonction du produit fini voulu par le client.</p>
+<p>En plus de faire mention du prix de la prestation, les deux parties doivent également <strong>informer</strong> différents points, lié au côté finance de leur collaboration :</p>
+<ul>
+<li>Les <strong>procédures quant au paiement de la prestation</strong>, par exemple, dans le cas où il aurait été convenu par les parties le versement d’un acompte, ou le versement du prix en totalité que vers la fin de l’exécution ;</li>
+<li>Le <strong>délai de paiement</strong>, c’est-à-dire la date prévue pour effectuer la transaction ;</li>
+<li>Les <strong>dispositions à prendre dans le cas où le client de la société ne respecterait pas les dates définies.</strong></li>
+</ul>
+<h3><span class="ez-toc-section" id="Le_plan_dexecution_des_travaux_fournis_par_lentreprise"></span>Le plan d’exécution des travaux fournis par l’entreprise<span class="ez-toc-section-end"></span></h3>
+<p>Dans cette clause, toutes les différentes problématiques qui tournent autour de <strong>l’exécution en soi des travaux sont à informer, et à détailler</strong>. Il est ainsi recommandé de faire mention du <strong>plan de travail</strong> du prestataire, des <strong>différents délais fixés</strong> par les deux parties.</p>
+<p>Les deux parties peuvent également soulever l’obligation du prestataire à achever le chantier, quels que soient les moyens déployés.</p>
+<h3><span class="ez-toc-section" id="La_duree_du_contrat"></span>La durée du contrat<span class="ez-toc-section-end"></span></h3>
+<p>Là, les contractants peuvent indiquer<strong> préalablement et conjointement la durée du contrat</strong>. En général, le contrat c’est-à-dire l’obligation entre l’entreprise prestataire et le client prend fin au moment du paiement et de l’achèvement des travaux. Ainsi, ils peuvent caractériser leur contrat de <strong>contrat à durée déterminée</strong>.</p>
+<h3><span class="ez-toc-section" id="Les_differentes_obligations_des_parties_au_contrat_de_prestation_de_service"></span>Les différentes obligations des parties au contrat de prestation de service<span class="ez-toc-section-end"></span></h3>
+<p>Ici, il est question de <strong>faire mention des obligations de l’entreprise envers le client, et du client envers l’entreprise</strong>. En faisant signature du contrat, les deux parties <strong>s’engagent mutuellement à respecter leurs obligations respectives</strong>.</p>
+<p>Là, il est important de réellement mettre en exergue les obligations des deux parties. Le prestataire de service a <strong>l’obligation de réaliser des travaux</strong>, selon la commande et les attentes du client.</p>
+<p>D’un autre côté, le client s’engage à <strong>payer</strong> <strong>le travail fait par le prestataire</strong>. En plus de l’obligation pécuniaire, le client a l’obligation de fournir à l’entreprise les moyens nécessaires à la réalisation du service en question.</p>
+<h3><span class="ez-toc-section" id="Les_dispositifs_lors_de_la_rupture_du_contrat"></span>Les dispositifs lors de la rupture du contrat<span class="ez-toc-section-end"></span></h3>
+<p>La rupture du contrat signifie la <strong>fin du contrat</strong>. Pour un contrat à durée déterminée, le contrat prend fin à l’arrivée de la <strong>date définie,</strong> mais peut également être rompu tout au long de la période, selon la décision bilatérale des deux parties au contrat. Pour un contrat à <strong>durée indéterminée</strong> par contre, les parties ont le droit de <strong>rompre le contrat à tout moment</strong>.</p>
+<h3><span class="ez-toc-section" id="Les_procedures_a_entreprendre_en_cas_de_litige"></span>Les procédures à entreprendre en cas de litige<span class="ez-toc-section-end"></span></h3>
+<p>Cette clause est souvent mise en avant vers la fin du contrat. Elle relate <strong>le processus à suivre dans le cas où les parties au contrat seraient en situation de litige</strong>. Il peut par exemple y être informé, le <strong>tribunal à approcher</strong> en cas de conflit d’intérêts, ou encore les <strong>dispositifs à entreprendre avant de faire passer le litige à la phase judiciaire.</strong></p>
+<blockquote><p><u>À noter</u> :</p>
+<p>Du fait de l’importance d’un tel acte, qui régit à la fois le client, mais également l’entreprise prestataire, il est recommandé de faire appel aux services d’un <strong>professionnel pour sa rédaction.</strong></p></blockquote>
+
+
+
+                                                            </div>
+                                                            <div class="author">
+                                                                            <div class="author-avatar">
+                                            <picture class="avatar avatar-100 photo">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic.jpg.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20100%20100&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 100px) 100vw, 100px"/>
+<img width="100" height="100" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20100%20100&#039;%3E%3C/svg%3E" alt="" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic.jpg 300w" data-lazy-sizes="(max-width: 100px) 100vw, 100px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-150x150.jpg"/>
+</picture>
+<noscript><picture class="avatar avatar-100 photo">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic.jpg.webp 300w" sizes="(max-width: 100px) 100vw, 100px"/>
+<img width="100" height="100" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-150x150.jpg" alt="" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/frederic.jpg 300w" sizes="(max-width: 100px) 100vw, 100px"/>
+</picture>
+</noscript>
+                                        </div>
+                                                                        <div class="author-informations">
+                                        <p class="h2">
+                                            Frédéric
+                                        </p>
+                                                                                    <p>Conseiller en reconversion professionnelle, Frédéric effectue des bilans de compétences afin de déterminer entre autres les motivations, les besoins, le potentiel ainsi que les aptitudes des travailleurs, et d’établir avec eux de nouveaux plans de carrière. Hormis les bilans, il se charge du coaching et de l’accompagnement de ses clients vers leur nouvel emploi.</p>
+                                                                                                                    </div>
+                                </div>
+                                                                                                                                </div>
+                                            <div class="col-4_sm-12">
+                            <div class="sidebar">
+                                <div class="widget widget_listcategorypostswidget" id="listcategorypostswidget-3"><p class="h3 widget-title">Dans la même thématique</p><ul class="lcp_fashionseo"><li><div><a href="https://www.maisondelemploi-slva.com/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise/" title="5 conseils pour réduire les coûts de comptabilité de votre petite entreprise"><picture class="lcp_thumbnail wp-post-image">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-300x300.jpg.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" alt="5 conseils pour réduire les coûts de comptabilité de votre petite entreprise" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-300x300.jpg 300w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-150x150.jpg"/>
+</picture>
+<noscript><picture class="lcp_thumbnail wp-post-image" loading="lazy">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-300x300.jpg.webp 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-150x150.jpg" alt="5 conseils pour réduire les coûts de comptabilité de votre petite entreprise" loading="lazy" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/10/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise-300x300.jpg 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+</picture>
+</noscript></a></div><div><span class="lcp_post"><a href="https://www.maisondelemploi-slva.com/5-conseils-pour-reduire-les-couts-de-comptabilite-de-votre-petite-entreprise/">5 conseils pour réduire les coûts de comptabilité de votre petite entreprise</a></span><span>Par Alexandra, le   12 octobre 2022</span'></></span></div></li><li><div><a href="https://www.maisondelemploi-slva.com/quest-ce-quun-extrait-k-bis-et-comment-lobtenir/" title="Qu&#039;est-ce qu&#039;un extrait K-Bis et comment l&#039;obtenir ?"><picture class="lcp_thumbnail wp-post-image">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-300x300.jpg.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" alt="Qu&#039;est-ce qu&#039;un extrait K-Bis et comment l&#039;obtenir ?" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-300x300.jpg 300w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-150x150.jpg"/>
+</picture>
+<noscript><picture class="lcp_thumbnail wp-post-image" loading="lazy">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-300x300.jpg.webp 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-150x150.jpg" alt="Qu&#039;est-ce qu&#039;un extrait K-Bis et comment l&#039;obtenir ?" loading="lazy" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_document_sign___1622478679-e1622478686295-300x300.jpg 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+</picture>
+</noscript></a></div><div><span class="lcp_post"><a href="https://www.maisondelemploi-slva.com/quest-ce-quun-extrait-k-bis-et-comment-lobtenir/">Qu&rsquo;est-ce qu&rsquo;un extrait K-Bis et comment l&rsquo;obtenir ?</a></span><span>Par Alexandra, le   23 juin 2021</span'></></span></div></li><li><div><a href="https://www.maisondelemploi-slva.com/quelles-sont-les-caracteristiques-et-les-differences-entre-franchise-et-concession%e2%80%89/" title="Quelles sont les caractéristiques et les différences entre franchise et concession ?"><img width="150" height="150" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20150%20150'%3E%3C/svg%3E" class="lcp_thumbnail wp-post-image" alt="Quelles sont les caractéristiques et les différences entre franchise et concession ?" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-150x150.jpeg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-24x24.jpeg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-48x48.jpeg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-96x96.jpeg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-300x300.jpeg 300w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-150x150.jpeg" /><noscript><img width="150" height="150" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-150x150.jpeg" class="lcp_thumbnail wp-post-image" alt="Quelles sont les caractéristiques et les différences entre franchise et concession ?" loading="lazy" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-150x150.jpeg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-24x24.jpeg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-48x48.jpeg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-96x96.jpeg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/06/_x_redaction-franchiseetconcession-300x300.jpeg 300w" sizes="(max-width: 150px) 100vw, 150px" /></noscript></a></div><div><span class="lcp_post"><a href="https://www.maisondelemploi-slva.com/quelles-sont-les-caracteristiques-et-les-differences-entre-franchise-et-concession%e2%80%89/">Quelles sont les caractéristiques et les différences entre franchise et concession ?</a></span><span>Par Frédéric, le   4 juin 2021</span'></></span></div></li><li><div><a href="https://www.maisondelemploi-slva.com/comment-obtenir-de-largent-grace-a-tiktok/" title="Comment obtenir de l&#039;argent grâce à TikTok ?"><picture class="lcp_thumbnail wp-post-image">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-150x150.jpeg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-24x24.jpeg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-48x48.jpeg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-96x96.jpeg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-300x300.jpeg.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" alt="Comment obtenir de l&#039;argent grâce à TikTok ?" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-150x150.jpeg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-24x24.jpeg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-48x48.jpeg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-96x96.jpeg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-300x300.jpeg 300w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-150x150.jpeg"/>
+</picture>
+<noscript><picture class="lcp_thumbnail wp-post-image" loading="lazy">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-150x150.jpeg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-24x24.jpeg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-48x48.jpeg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-96x96.jpeg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-300x300.jpeg.webp 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-150x150.jpeg" alt="Comment obtenir de l&#039;argent grâce à TikTok ?" loading="lazy" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-150x150.jpeg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-24x24.jpeg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-48x48.jpeg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-96x96.jpeg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_tiktok-2-300x300.jpeg 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+</picture>
+</noscript></a></div><div><span class="lcp_post"><a href="https://www.maisondelemploi-slva.com/comment-obtenir-de-largent-grace-a-tiktok/">Comment obtenir de l&rsquo;argent grâce à TikTok ?</a></span><span>Par Alexandra, le   25 août 2022</span'></></span></div></li><li><div><a href="https://www.maisondelemploi-slva.com/le-calcul-et-la-gestion-de-la-masse-salariale/" title="Le calcul et la gestion de la masse salariale"><picture class="lcp_thumbnail wp-post-image">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-150x150.jpeg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-24x24.jpeg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-48x48.jpeg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-96x96.jpeg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-300x300.jpeg.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" alt="Le calcul et la gestion de la masse salariale" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-150x150.jpeg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-24x24.jpeg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-48x48.jpeg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-96x96.jpeg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-300x300.jpeg 300w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-150x150.jpeg"/>
+</picture>
+<noscript><picture class="lcp_thumbnail wp-post-image" loading="lazy">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-150x150.jpeg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-24x24.jpeg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-48x48.jpeg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-96x96.jpeg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-300x300.jpeg.webp 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-150x150.jpeg" alt="Le calcul et la gestion de la masse salariale" loading="lazy" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-150x150.jpeg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-24x24.jpeg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-48x48.jpeg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-96x96.jpeg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/07/_x_redaction-masse-salariale-300x300.jpeg 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+</picture>
+</noscript></a></div><div><span class="lcp_post"><a href="https://www.maisondelemploi-slva.com/le-calcul-et-la-gestion-de-la-masse-salariale/">Le calcul et la gestion de la masse salariale</a></span><span>Par Frédéric, le   30 juillet 2021</span'></></span></div></li><li><div><a href="https://www.maisondelemploi-slva.com/comment-choisir-votre-entreprise-de-portage-salarial/" title="Comment choisir votre entreprise de portage salarial ?"><picture class="lcp_thumbnail wp-post-image">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-300x300.jpg.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" alt="Comment choisir votre entreprise de portage salarial ?" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-300x300.jpg 300w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-150x150.jpg"/>
+</picture>
+<noscript><picture class="lcp_thumbnail wp-post-image" loading="lazy">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-300x300.jpg.webp 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-150x150.jpg" alt="Comment choisir votre entreprise de portage salarial ?" loading="lazy" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/07/img-comment-choisir-votre-entreprise-de-portage-salarial-300x300.jpg 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+</picture>
+</noscript></a></div><div><span class="lcp_post"><a href="https://www.maisondelemploi-slva.com/comment-choisir-votre-entreprise-de-portage-salarial/">Comment choisir votre entreprise de portage salarial ?</a></span><span>Par Alexandra, le   29 juillet 2022</span'></></span></div></li><li><div><a href="https://www.maisondelemploi-slva.com/3-secteurs-porteurs-pour-ouvrir-votre-franchise/" title="3 secteurs porteurs pour ouvrir votre franchise"><picture class="lcp_thumbnail wp-post-image">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-300x300.jpg.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" alt="3 secteurs porteurs pour ouvrir votre franchise" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-300x300.jpg 300w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-150x150.jpg"/>
+</picture>
+<noscript><picture class="lcp_thumbnail wp-post-image" loading="lazy">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-300x300.jpg.webp 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-150x150.jpg" alt="3 secteurs porteurs pour ouvrir votre franchise" loading="lazy" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/06/4134-300x300.jpg 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+</picture>
+</noscript></a></div><div><span class="lcp_post"><a href="https://www.maisondelemploi-slva.com/3-secteurs-porteurs-pour-ouvrir-votre-franchise/">3 secteurs porteurs pour ouvrir votre franchise</a></span><span>Par Alexandra, le   19 juin 2023</span'></></span></div></li><li><div><a href="https://www.maisondelemploi-slva.com/tout-sur-le-siege-social-dune-entreprise/" title="Tout sur le siège social d&#039;une entreprise"><picture class="lcp_thumbnail wp-post-image">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-150x150.jpeg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-24x24.jpeg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-48x48.jpeg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-96x96.jpeg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-300x300.jpeg.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" alt="Tout sur le siège social d&#039;une entreprise" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-150x150.jpeg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-24x24.jpeg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-48x48.jpeg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-96x96.jpeg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-300x300.jpeg 300w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-150x150.jpeg"/>
+</picture>
+<noscript><picture class="lcp_thumbnail wp-post-image" loading="lazy">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-150x150.jpeg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-24x24.jpeg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-48x48.jpeg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-96x96.jpeg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-300x300.jpeg.webp 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-150x150.jpeg" alt="Tout sur le siège social d&#039;une entreprise" loading="lazy" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-150x150.jpeg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-24x24.jpeg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-48x48.jpeg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-96x96.jpeg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2022/08/_x_nf1-3246-817979502-300x300.jpeg 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+</picture>
+</noscript></a></div><div><span class="lcp_post"><a href="https://www.maisondelemploi-slva.com/tout-sur-le-siege-social-dune-entreprise/">Tout sur le siège social d&rsquo;une entreprise</a></span><span>Par Alexandra, le   11 août 2022</span'></></span></div></li><li><div><a href="https://www.maisondelemploi-slva.com/les-regles-pour-reussir-votre-communication-sur-point-de-vente/" title="Les règles pour réussir votre communication sur point de vente"><picture class="lcp_thumbnail wp-post-image">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-300x300.jpg.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" alt="Les règles pour réussir votre communication sur point de vente" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-300x300.jpg 300w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-150x150.jpg"/>
+</picture>
+<noscript><picture class="lcp_thumbnail wp-post-image" loading="lazy">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-150x150.jpg.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-24x24.jpg.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-48x48.jpg.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-96x96.jpg.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-300x300.jpg.webp 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-150x150.jpg" alt="Les règles pour réussir votre communication sur point de vente" loading="lazy" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-150x150.jpg 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-24x24.jpg 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-48x48.jpg 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-96x96.jpg 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/10/media-les-regles-pour-reussir-votre-communication-sur-point-de-vente-300x300.jpg 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+</picture>
+</noscript></a></div><div><span class="lcp_post"><a href="https://www.maisondelemploi-slva.com/les-regles-pour-reussir-votre-communication-sur-point-de-vente/">Les règles pour réussir votre communication sur point de vente</a></span><span>Par Alexandra, le   14 octobre 2021</span'></></span></div></li><li><div><a href="https://www.maisondelemploi-slva.com/nos-3-secrets-pour-rendre-votre-prochain-seminaire-dentreprise-inoubliable/" title="Nos 3 secrets pour rendre votre prochain séminaire d&#039;entreprise inoubliable"><picture class="lcp_thumbnail wp-post-image">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-150x150.jpe.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-24x24.jpe.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-48x48.jpe.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-96x96.jpe.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-300x300.jpe.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20150%20150&#039;%3E%3C/svg%3E" alt="Nos 3 secrets pour rendre votre prochain séminaire d&#039;entreprise inoubliable" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-150x150.jpe 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-24x24.jpe 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-48x48.jpe 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-96x96.jpe 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-300x300.jpe 300w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-150x150.jpe"/>
+</picture>
+<noscript><picture class="lcp_thumbnail wp-post-image" loading="lazy">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-150x150.jpe.webp 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-24x24.jpe.webp 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-48x48.jpe.webp 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-96x96.jpe.webp 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-300x300.jpe.webp 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+<img width="150" height="150" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-150x150.jpe" alt="Nos 3 secrets pour rendre votre prochain séminaire d&#039;entreprise inoubliable" loading="lazy" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-150x150.jpe 150w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-24x24.jpe 24w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-48x48.jpe 48w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-96x96.jpe 96w, https://www.maisondelemploi-slva.com/wp-content/uploads/2023/11/7f04676fae9e3abed2848dd9b5d5e44a-300x300.jpe 300w" sizes="(max-width: 150px) 100vw, 150px"/>
+</picture>
+</noscript></a></div><div><span class="lcp_post"><a href="https://www.maisondelemploi-slva.com/nos-3-secrets-pour-rendre-votre-prochain-seminaire-dentreprise-inoubliable/">Nos 3 secrets pour rendre votre prochain séminaire d&rsquo;entreprise inoubliable</a></span><span>Par Alexandra, le   8 novembre 2023</span'></></span></div></li></ul></div>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+        </div>
+    </main>
+        
+<header id="header" role="banner">
+                                                                        <div class="site-navigation">
+        <div class="container">
+            <div class="grid-noBottom">
+                <div class="col-12">
+                    <div class="inner">
+                        <div class="brand">
+                                                            <a href="https://www.maisondelemploi-slva.com" rel="home" itemprop="url"><picture class="custom-logo">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png.webp 304w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-300x40.png.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20304%2040&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 304px) 100vw, 304px"/>
+<img width="304" height="40" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20304%2040&#039;%3E%3C/svg%3E" alt="Cropped Logo E1613420710741.png" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png 304w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-300x40.png 300w" data-lazy-sizes="(max-width: 304px) 100vw, 304px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png"/>
+</picture>
+<noscript><picture class="custom-logo">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png.webp 304w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-300x40.png.webp 300w" sizes="(max-width: 304px) 100vw, 304px"/>
+<img width="304" height="40" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png" alt="Cropped Logo E1613420710741.png" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png 304w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-300x40.png 300w" sizes="(max-width: 304px) 100vw, 304px"/>
+</picture>
+</noscript></a>
+                                                    </div>
+                        <div class="opener">
+                            <span aria-label="Afficher/masquer la modale du menu"></span>
+                        </div>
+                        <div class="menu">
+                                                            <nav role="navigation">
+                                    <ul><li id="menu-item-205" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-205"><a href="https://www.maisondelemploi-slva.com/category/emploi/">Emploi et métiers</a></li>
+<li id="menu-item-207" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-207"><a href="https://www.maisondelemploi-slva.com/category/formation/">Formation</a></li>
+<li id="menu-item-208" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-208"><a href="https://www.maisondelemploi-slva.com/category/marketing/">Marketing</a></li>
+<li id="menu-item-206" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-206"><a href="https://www.maisondelemploi-slva.com/category/entreprise/">Entreprise</a></li>
+<li id="menu-item-209" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-209"><a href="https://www.maisondelemploi-slva.com/category/services/">Services</a></li>
+<li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63"><a href="https://www.maisondelemploi-slva.com/contact/" class="button small">Contact</a></li>
+</ul>
+                                </nav>
+                                                                                        <div class="icons">
+                                                                            <div class="search" id="search-open">
+                                            <span aria-label="Fermer la modale de recherche">
+                                                <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M14.946 1C9.403 1 4.894 5.51 4.894 11.053c0 2.502.924 4.789 2.442 6.55L1.22 23.72a.75.75 0 101.06 1.06l6.117-6.116a10 10 0 006.55 2.442C20.49 21.106 25 16.596 25 11.053S20.49 1 14.946 1zm0 18.606c-4.716 0-8.552-3.836-8.552-8.553S10.23 2.5 14.946 2.5c4.717 0 8.554 3.837 8.554 8.553s-3.837 8.553-8.554 8.553z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                                                                                        </div>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        
+    <footer id="footer" role="contentinfo">
+                                    <div class="bottom">
+                <div class="container">
+                    <div class="site-footer-navigation">
+                        <div class="grid-noBottom">
+                            <div class="col-12">
+                                                                    <div class="copyright">
+                                        <span>
+                                            Maison de l'Emploi - SLVA
+                                        </span>
+                                    </div>
+                                                                                                    <div class="menu">
+                                        <ul><li id="menu-item-27" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-27"><span data-obflink-url="aHR0cHM6Ly93d3cubWFpc29uZGVsZW1wbG9pLXNsdmEuY29tL21lbnRpb25zLWxlZ2FsZXMv" tabindex="0">Mentions légales</span></li>
+<li id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28"><span data-obflink-url="aHR0cHM6Ly93d3cubWFpc29uZGVsZW1wbG9pLXNsdmEuY29tL3BsYW4tZHUtc2l0ZS8=" tabindex="0">Plan du site</span></li>
+</ul>
+                                    </div>
+                                                                                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </footer>
+        
+    <div id="search-modal">
+        <div class="container">
+            <div class="grid-center-noBottom">
+                <div class="col-8_md-10_sm-12">
+                    <div class="search-modal-inner">
+                        <div id="search-close" aria-label="Fermer la modale de recherche">&times;</div>
+                                                    <div class="logo">
+                                <a href="https://www.maisondelemploi-slva.com/" class="custom-logo-link" rel="home"><picture class="custom-logo">
+<source type="image/webp" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png.webp 304w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-300x40.png.webp 300w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20304%2040&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 304px) 100vw, 304px"/>
+<img width="304" height="40" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20304%2040&#039;%3E%3C/svg%3E" alt="Cropped Logo E1613420710741.png" data-lazy-srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png 304w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-300x40.png 300w" data-lazy-sizes="(max-width: 304px) 100vw, 304px" data-lazy-src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png"/>
+</picture>
+<noscript><picture class="custom-logo">
+<source type="image/webp" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png.webp 304w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-300x40.png.webp 300w" sizes="(max-width: 304px) 100vw, 304px"/>
+<img width="304" height="40" src="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png" alt="Cropped Logo E1613420710741.png" srcset="https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741.png 304w, https://www.maisondelemploi-slva.com/wp-content/uploads/2021/02/cropped-logo-e1613420710741-300x40.png 300w" sizes="(max-width: 304px) 100vw, 304px"/>
+</picture>
+</noscript></a>
+                            </div>
+                                                <form role="search" method="get" id="searchform" class="searchform" action="https://www.maisondelemploi-slva.com/">
+            <label class="screen-reader-text" for="s">Rechercher :</label>
+            <input type="text" value="" name="s" id="s" />
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                    <path fill="currentColor" fill-rule="evenodd" d="M19.427 21.427a8.5 8.5 0 112-2l5.585 5.585c.55.55.546 1.43 0 1.976l-.024.024a1.399 1.399 0 01-1.976 0l-5.585-5.585zM14.5 21a6.5 6.5 0 100-13 6.5 6.5 0 000 13z"/>
+                </svg>
+            </button>
+        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <button type="button" id="back-to-top" aria-label="Retour en haut">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M45.7 38.1l-2 2L32 28.4 20.3 40.1l-2-2L32 24.4l13.7 13.7"/></svg>
+        </button>
+        <script type="rocketlazyloadscript" data-minify="1" src='https://www.maisondelemploi-slva.com/wp-content/cache/min/1/wp-content/plugins/metronet-profile-picture/js/mpp-frontend.js?ver=1655408742' id='mpp_gutenberg_tabs-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://www.maisondelemploi-slva.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=1663629666' id='swv-js' defer></script>
+<script id='contact-form-7-js-extra'>
+var wpcf7 = {"api":{"root":"https:\/\/www.maisondelemploi-slva.com\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
+</script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://www.maisondelemploi-slva.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/js/index.js?ver=1655408742' id='contact-form-7-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://www.maisondelemploi-slva.com/wp-content/cache/min/1/wp-content/plugins/obflink/script/obflink.js?ver=1655408742' id='obflink-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://www.maisondelemploi-slva.com/wp-content/cache/min/1/wp-content/themes/seomag/assets/tiny-slider/tiny-slider.js?ver=1655408742' id='seomag-js-tns-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://www.maisondelemploi-slva.com/wp-content/cache/min/1/wp-content/themes/seomag/statics/main.js?ver=1655408742' id='seomag-js-js' defer></script>
+<script id='q2w3_fixed_widget-js-extra'>
+var q2w3_sidebar_options = [{"sidebar":"seomag_blog_single","use_sticky_position":false,"margin_top":90,"margin_bottom":270,"stop_elements_selectors":"","screen_max_width":0,"screen_max_height":0,"widgets":["#listcategorypostswidget-3"]}];
+</script>
+<script type="rocketlazyloadscript" src='https://www.maisondelemploi-slva.com/wp-content/plugins/q2w3-fixed-widget/js/frontend.min.js?ver=6.1.1' id='q2w3_fixed_widget-js' defer></script>
+<script type="rocketlazyloadscript" src='https://www.maisondelemploi-slva.com/wp-content/plugins/easy-table-of-contents/vendor/smooth-scroll/jquery.smooth-scroll.min.js?ver=2.2.0' id='ez-toc-jquery-smooth-scroll-js' defer></script>
+<script type="rocketlazyloadscript" src='https://www.maisondelemploi-slva.com/wp-content/plugins/easy-table-of-contents/vendor/js-cookie/js.cookie.min.js?ver=2.2.1' id='ez-toc-js-cookie-js' defer></script>
+<script type="rocketlazyloadscript" src='https://www.maisondelemploi-slva.com/wp-content/plugins/easy-table-of-contents/vendor/sticky-kit/jquery.sticky-kit.min.js?ver=1.9.2' id='ez-toc-jquery-sticky-kit-js' defer></script>
+<script id='ez-toc-js-js-extra'>
+var ezTOC = {"smooth_scroll":"1","visibility_hide_by_default":"","width":"100%","scroll_offset":"140"};
+</script>
+<script type="rocketlazyloadscript" src='https://www.maisondelemploi-slva.com/wp-content/plugins/easy-table-of-contents/assets/js/front.min.js?ver=2.0.33.2-1663629443' id='ez-toc-js-js' defer></script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://www.maisondelemploi-slva.com/wp-content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script>
+    <script>class RocketElementorAnimation{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}_detectAnimations(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this._listAnimationSettingsKeys(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this._animateElement(t)}catch(t){}})}_animateElement(t){const e=JSON.parse(t.dataset.settings),i=e._animation_delay||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let s=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this._removeAnimationSettings(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(s)})}_listAnimationSettingsKeys(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}_removeAnimationSettings(t,e){this._listAnimationSettingsKeys().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorAnimation;requestAnimationFrame(t._detectAnimations.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorAnimation.run);</script></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1714167822 -->

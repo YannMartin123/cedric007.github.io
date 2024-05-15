@@ -2,6 +2,7 @@
 
 body {
     font-family: Arial, sans-serif;
+    backgroung-image: url('back.png');
     margin: 0;
     padding: 0;
     

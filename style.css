@@ -1,11 +1,14 @@
 
 
 body {
-    font-family: Arial, sans-serif;
+    
     body-image: url('back.png');
+    font-family: 'montserrat_bold';
     background-color: rgb(56, 48, 44);
     margin: 0;
     padding: 0;
+    background-size:cover;
+    text-align: center;
     
 }
 
@@ -58,12 +61,7 @@ footer {
     display: flex;
 }
 
-body{
-    background-size:cover;
-    
-    text-align: center;
-    
-}
+
 a:hoover {
 color:darkred;
 }
@@ -89,9 +87,7 @@ h2{
     font-size: 30px;
 }
 
-body{
-    font-family: 'montserrat_bold';
-}
+
  
 .texte {
     color: rgb(163, 39, 39); /* Couleur initiale du texte */
